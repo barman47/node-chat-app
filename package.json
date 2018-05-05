@@ -10,10 +10,10 @@
   "engines": {
     "node": "8.7.0"
   },
-
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "socket.io": "^2.1.0"
   }
 }
