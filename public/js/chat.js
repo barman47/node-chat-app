@@ -1,5 +1,5 @@
 var socket = io();
-
+var params = jQuery.deparam(window.location.search);
 function scrollToBottom () {
     // Selectors
     var messages = jQuery('#messages');
@@ -17,8 +17,6 @@ function scrollToBottom () {
 }
 
 socket.on('connect', function () {
-    var params = jQuery.deparam(window.location.search);
-
     socket.emit('join', params, function (err) {
         if (err) {
             alert(err);
@@ -45,13 +43,14 @@ socket.on('updateUserList', function (users) {
 
 socket.on('newMessage', function (message) {
     var formattedTime = moment(message.createdAt).format('h:mm a');
-    var template = jQuery('#message-template').html();
+    var template = $('#message-template').html();
     var html = Mustache.render(template, {
         text: message.text,
         from: message.from,
-        createdAt: formattedTime
+        createdAt: formattedTime,
+        message: ''
     });
-
+    $('.typingNotifier').html('');
     jQuery('#messages').append(html);
     scrollToBottom();
 });
@@ -97,6 +96,57 @@ locationButton.on('click', function () {
         });
     }, function () {
         locationButton.removeAttr('disabled').text('Send location');
-        alert('Unable to fetch location.');
+        alert('Unable to fetch location. Please check your Internet Connection');
     });
+});
+
+var messageBox = document.getElementById('message');
+messageBox.addEventListener('keypress', function (e) {
+    if (!isEmpty(messageBox.value) && e.keyCode !== 32) {
+        console.log(`${params.name} is typing...`);
+        socket.emit('userTyping', {
+            user: params.name,
+            room: params.room,
+            typing: true
+        });
+    }
+}, false);
+
+socket.on('typingNotification', function (message) {
+    var typing = `${message.user} is typing...`;
+    var isTyping = true;
+
+    while (isTyping === true) {
+        if ($('.typingNotifier').attr('class') === 'typingNotifier') {
+            if ($('#message').html() === '') {
+                $('.typingNotifier').html('');
+                isTyping = false;
+            }
+            $('.typingNotifier').html(typing);
+            isTyping = false;
+        } else {
+            $('.typingNotifier').attr('class', '');
+            $('.typingNotifier').html('');
+            isTyping = false;
+        }
+    }
+});
+
+function isEmpty(element) {
+    if (element.value === '' && element.value.trim() === '') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+$('#message').focusout(function (event) {
+    socket.emit('focusoutEvent', {
+        info: 'message textfield focusedout'
+    });
+});
+
+socket.on('focusout', function (message) {
+    console.log(message.text);
+    $('.typingNotifier').html('');
 });

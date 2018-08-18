@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" contnet="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Join | ChatApp</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body class="centered-form">
-<div class="centered-form__form">
-    <form action="/chat.html">
-        <div class="form-field">
-            <h3>Join a Chat</h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" contnet="width=device-width, initial-scale=1, user-scalable=no">
+        <title>Join | ChatApp</title>
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/register.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body ng-app="chatApp" class="centered-form">
+        <div ng-view>
+
         </div>
-        <div class="form-field">
-            <label>Display name</label>
-            <input type="text" name="name" autofocus>
-        </div>
-        <div class="form-field">
-            <label>Room name</label>
-            <input type="txet" name="room">
-        </div>
-        <div class="form-field">
-            <button>Join</button>
-        </div>
-    </form>
-</div>
-</body>
+        <div class="picture-background"></div>
+        <script src="/js/libs/angular.min.js"></script>
+        <script src="/js/libs/angular-route.min.js"></script>
+        <script src="/js/libs/jquery-3.1.1.js"></script>
+        <script src="/js/libs/deparam.js"></script>
+        <script src="/js/angular-controller.js"></script>
+    </body>
 </html>

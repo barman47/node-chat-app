@@ -13,8 +13,10 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 var users = new Users();
+var routes = require('./utils/routes');
 
 app.use(express.static(publicPath));
+app.use(publicPath, routes);
 
 io.on('connection', (socket) => {
     console.log('New user connected');
@@ -49,7 +51,19 @@ io.on('connection', (socket) => {
         if (user) {
             io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude));
         }
+    });
 
+    socket.on('userTyping', (message) => {
+        socket.broadcast.to(message.room).emit('typingNotification', {
+            user: message.user,
+            typing: message.typing
+        });
+    });
+
+    socket.on('focusoutEvent', (message) => {
+        socket.broadcast.to(message.room).emit('focusout', {
+            text: message.info
+        });
     });
 
     socket.on('disconnect', () => {
@@ -63,5 +77,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(port, () => {
-    console.log(`Server is up on ${port}`);
+    console.log(`Server is up on Port ${port}`);
 });

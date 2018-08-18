@@ -15,10 +15,12 @@
 
     <section class="chat__main">
         <ol id="messages" class="chat__messages"></ol>
-
+        <div class="typingNotification">
+            <p class="typingNotifier"></p>
+        </div>
         <footer class="chat__footer">
             <form id="message-form">
-                <input name="message" type="text" placeholder="Message" autofocus autocomplete="off">
+                <input id="message" name="message" type="text" placeholder="Message" autofocus autocomplete="off">
                 <button>Send</button>
             </form>
             <button id="send-location">Send Location</button>
@@ -27,6 +29,9 @@
 
     <script id="message-template" type="text/template">
         <li class="message">
+            <!-- <div id="typing-template">
+                <span>{{message}}</span>
+            </div> -->
             <div class="message__title">
                 <h4>{{from}}</h4>
                 <span>{{createdAt}}</span>
@@ -36,6 +41,7 @@
             </div>
         </li>
     </script>
+    
     <script id="location-message-template" type="text/template">
         <li class="message">
             <div class="message__title">
@@ -46,6 +52,11 @@
                 <p><a href="{{url}}" target="_blank">My Current Location</a></p>
             </div>
         </li>
+    </script>
+    <script id="message-notification-template" type="text/template">
+        <ol id="notification-message">
+
+        </ol>
     </script>
 
     <script src="/socket.io/socket.io.js"></script>

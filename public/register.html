@@ -1,0 +1,38 @@
+<form method="POST" action="/login.html" name="signupForm" class="provided-form__form register-form" novalidate>
+    <div class="form-field">
+        <input type="text" id="firstname" name="firstname" placeholder="Enter First name *" ng-required="true" ng-model="form.firstname">
+        <span class="error-message" ng-show="signupForm.firstname.$touched && signupForm.firstname.$invalid">Please provide a valid name</span>
+    </div>
+
+    <div class="form-field">
+        <input type="text" id="lastname" name="lastname" placeholder="Enter Last name *" ng-required="true" ng-model="form.lastname">
+        <span class="error-message" ng-show="signupForm.lastname.$touched && signupForm.lastname.$invalid">Please provide a valid name</span>
+    </div>
+
+    <div class="form-field">
+        <input type="text" id="username" name="username" placeholder="Enter username *" ng-required="true" ng-model="form.username">
+        <span class="error-message" ng-show="signupForm.username.$touched && signupForm.username.$invalid">Please provide a valid username</span>
+    </div>
+
+    <div class="form-field">
+        <input type="email" id="email" name="email" placeholder="Email address here *" ng-required="true" ng-model="form.email">
+        <span class="error-message" ng-show="signupForm.email.$touched && signupForm.email.$invalid">Invalid Email Address!!!</span>
+    </div>
+
+    <div class="form-field">
+        <input type="password" id="password" name="password" placeholder="Password here *" ng-minlength="8" ng-required="true" ng-model="form.password">
+        <span class="error-message" ng-show="signupForm.password.$touched && signupForm.password.$invalid">Password should be at least 8 characters</span>
+    </div>
+
+    <div class="form-field">
+        <label for="gender">Gender *</label>
+        <p>
+            <span class="gender">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="radio" name="gender" id="male" value="Male" ng-model="form.male">&nbsp;
+            <span class="gender">Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="radio" name="gender" id="female" value="Female" ng-model="form.female">
+        </p>
+        <span ng-show="signupForm.gender.$touched && signupForm.gender.$invalid">Please select your Gender</span>
+    </div>
+    <div class="form-field">
+        <button>Register</button>
+    </div>
+</form>

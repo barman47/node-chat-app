@@ -7,14 +7,6 @@
     font-size: .95rem;
 }
 
-.picture-background {
-    background: url("../img/girl.jpg") no-repeat center fixed;
-    background-size: 100vw 100vh;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-}
-
 ul, li {
     list-style-position: inside;
 }
@@ -52,28 +44,21 @@ button:disabled {
     height: 100vh;
     width: 100vw;
     justify-content: center;
-    background-size: 100vw 100vh;
-    /*
-    background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); !* ff3.6+ *!
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); !* safari4+,chrome *!
-    background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); !* safari5.1+,chrome10+ *!
-    background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); !* opera 11.10+ *!
-    background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); !* ie10+ *!
-    background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); !* w3c *!
-    */
+    background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ie10+ */
+    background: linear-gradient(325deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* w3c */
 }
 
 .centered-form__form {
-    position: relative;
-    z-index: 1;
-    background-color: #ffffff;
-    /*background: rgba(250, 250, 250, 0.9);*/
+    background: rgba(250, 250, 250, 0.9);
     border: 1px solid #e1e1e1;
     border-radius: 5px;
     padding: 0px 20px;
     margin: 20px;
-    width: 300px;
-    height: 400px;
+    width: 230px;
 }
 
 .form-field {
@@ -92,27 +77,6 @@ button:disabled {
 .form-field input, .form-field select {
     border: 1px solid #e1e1e1;
     padding: 10px;
-}
-
-.form-field input.ng-touched.ng-invalid, .form-field .error-message.ng-touched.ng-invalid{
-    background-color: #ff8787;/*rgba(255, 69, 69, 0.9);*/
-    color: #ffffff;
-    border: none;
-}
-
-.form-field input.ng-touched.ng-invalid::placeholder{
-    color: #ff0000;
-}
-
-.input-field {
-    background: #ffffff;
-    outline: none;
-    border: none;
-}
-
-.input-field:focus {
-    border-bottom: 2px solid #265f82;
-    background: rgba(230, 234, 238, 0.51);
 }
 
 .chat {
@@ -207,36 +171,6 @@ button:disabled {
 .message__title span {
     color: #999;
 }
-
-p, a {
-    text-align: left;
-}
-
-a:link {
-    text-decoration: none;
-    color: #265f82;
-    font-weight: bold;
-}
-
-a:visited {
-    color: #265f82;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    color: red;
-}
-
-.typingNotifier {
-    position: relative;
-    top: ;
-    left: 10px;
-    color: green;
-    font-style: italic; 
- }
 
 @media (max-width: 600px) {
     * {
